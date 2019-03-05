@@ -1,0 +1,14 @@
+function pacersWon (){
+    console.log("Pacers won!");
+}
+pacersWon();
+pacersWon();
+pacersWon();
+pacersWon();
+pacersWon();
+
+
+
+
+
+
