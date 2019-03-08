@@ -1,7 +1,5 @@
-  let key = 'water';
-  Object.keys(garden).forEach(g => {
-      //console.log(g)
-    if (key === g) {
-        console.log(garden[key]);
-    }
-});
+
+let count = 0;
+for ( ;  count < 9; ++count ) {
+  console.log(count);
+}

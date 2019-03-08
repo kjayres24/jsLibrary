@@ -18,3 +18,4 @@
  for (let cat of catArray) { //'let' can be optional in the ()
  console.log(cat, 'says meow');
 }
+

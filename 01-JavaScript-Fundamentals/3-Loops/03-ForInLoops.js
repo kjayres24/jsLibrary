@@ -34,3 +34,4 @@ for (let x in studentName) {
     }
 }
 console.log(capName);
+
