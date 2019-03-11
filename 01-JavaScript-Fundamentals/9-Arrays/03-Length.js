@@ -17,3 +17,5 @@ if (arr instanceof Array === true) {
     let revArr = arr.reverse();
         revArr.forEach(a => console.log(a))
 }
+
+
