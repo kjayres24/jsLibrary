@@ -1,4 +1,20 @@
-function swap(swap1, language, library) {
-    [swap1[language], swap1[library]] = [swap1[library], swap1[language]];
+
+let arrOne = [10, 20, 30, 40, 50, 60, 70];
+let arrTwo = [2, 4, 6, 8, 10];
+
+const multiply = (arr1 = [], arr2 = []) => {
+
+    let newArr = [];
+
+    for (i = 0; i < arrOne.length; i++) {
+        if (    ) {
+
+        } else {
+
+        }
+    }
+    return
 }
-swap(swap1, 'language', 'library');
+
+let sum = multiply(i);
+console.log(multiply);
