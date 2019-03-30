@@ -4,9 +4,9 @@ import { Row } from "reactstrap";
 const Footer = () => {
     return (
         <footer>
-            <row>
+            <Row>
                 <p>&copy; Eleven Fifty 2018</p>
-            </row>
+            </Row>
         </footer>
     );
 };
