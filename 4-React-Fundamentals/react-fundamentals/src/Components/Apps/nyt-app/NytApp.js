@@ -6,28 +6,28 @@ import NytResults from './NytResults'
 const baseURL = 'https://api.nytimes.com/svc/search/v2/articlesearch.json';
 const key = '6JAkk679WwdR7yS9mldSGu4LUiGEcIzd';
 
-export default class NytApp extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {
+export default class NytApp extends Component { //
+    constructor(props) { //sets up the class and constructs any values present at the creation of the class (props is the property)
+        super(props) //
+        this.state = { //"this is where we are starting in the object"
             search: '',
             startDate: '',
             endDate: '',
             pageNumber: 0,
-            results: []
+            results: [] //stores info which we are pulling from the API
         };
     }
 
-    handleChange = (event) => {
-        this.setState({
-            [event.target.name]: event.target.value,
+    handleChange = (event) => { //name of function and passing in parameter of (event), referring the the diff. input values
+        this.setState({ //changing the state, we want the state to look at the info we are typing into the search
+            [event.target.name]: event.target.value, //looks for the event and the name and reassign that to a value
         });
     }
 
-    handleSubmit = (event) => {
+    handleSubmit = (event) => { //whenever you submit information, this prevents the page from refreshing
         this.setState({ pageNumber: 0 })
         this.fetchResults()
-        event.preventDefault()
+        event.preventDefault() 
     }
 
     fetchResults = () => {
