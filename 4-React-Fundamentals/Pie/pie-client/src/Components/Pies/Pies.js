@@ -31,9 +31,35 @@ const testData = [
 
 
 class Pies extends React.Component {
+    constructor() {
+        super();
+
+        this.state = {
+            pies: []
+        }
+    }
+
+    componentDidMount = () => {
+        this.fetchPies();
+
+    }
+
+    fetchPies = () => { //brings back pie data and updates our state
+        let url = 'http://localhost:3000/pies';
+
+        fetch(url)
+            .then(res => res.json())
+            .then(data => {
+                this.setState({
+                    pies: data
+                })
+            })
+            .catch(err => console.log(err));
+
+    }
 
     render() {
-        let pieRows = testData.map(pie => {
+        let pieRows = this.state.pies.map(pie => {
             return (
                 <Pie pie={pie} />
             )

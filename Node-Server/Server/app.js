@@ -1,17 +1,25 @@
+require('dotenv').config();
+
 var express = require('express');
 var app = express();
-var test = require('./Controllers/testcontroller')
+var test = require('./Controllers/testcontroller');
+var authTest = require('./controllers/authtestcontroller');
+var user = require('./Controllers/usercontroller');
 var sequelize = require('./db');
 var bodyParser = require('body-parser');
-var user = require('./Controllers/usercontroller');
 
 sequelize.sync();
 
 app.use(bodyParser.json()); //tells the application that we want json to be used as we process this request
 
+app.use(require('./middleware/headers'));
+
 app.use('/test', test);
 
 app.use('/api/user', user);
+
+app.use(require('./middleware/validate-session')); //2
+app.use('/authtest', authTest); //3
 
 app.listen(3000, function () {
     console.log('App is listening on 3000.')

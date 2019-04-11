@@ -16,6 +16,26 @@ class Auth extends React.Component {
         })
     };
 
+    handleSubmit = (event) => {
+        event.preventDefault(); //so page wont refresh
+
+        let url = this.state.login ? 'http://localhost:3000/auth/signin' : 'http://localhost:3000/auth/signup' //add the port the sERVER is on
+
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(this.state)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                this.props.tokenHandler(data.sessionToken)
+            })
+            .catch(err => console.log(err));
+    }
+
     loginToggle = (event) => {
         event.preventDefault();
 

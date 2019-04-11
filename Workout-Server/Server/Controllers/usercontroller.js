@@ -5,33 +5,31 @@ var User = sequelize.import('../models/user');
 var bcrypt = require('bcryptjs');
 var jwt = require('jsonwebtoken');
 
-/*************************
-** Create User Endpoint: Starter***
-**************************/
-//2
+
+
 router.post('/createuser', function (req, res) {
 
     var username = req.body.user.username;
-    var pass = req.body.user.password;               /**3**/
+    var pass = req.body.user.password;
 
     User.create({
         username: username,
         passwordhash: bcrypt.hashSync(pass, 10)
 
     }).then(
-        function createSuccess(user) {
+        createSuccess = (user) => {
             var token = jwt.sign({
                 id: user.id
             }, process.env.JWT_SECRET,
                 { expiresIn: 60 * 60 * 24 });
-            res.json({
+            res.status(200).json({
                 user: user,
                 message: 'created',
                 sessionToken: token
             });
         },
-        function createError(err) {
-            res.send(500, err.message);
+        createError = (err) => {
+            res.status(500).json({ error: err })
         }
     );
 });
